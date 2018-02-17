@@ -93,7 +93,7 @@ name = "cmp_cmpress"
 version = "0.1.0"
 dependencies = [
  "quicli 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sega_cmp 0.1.0 (git+https://github.com/studio-lucia/sega_cmp.git?branch=clone_size)",
+ "sega_cmp 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -374,8 +374,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "sega_cmp"
-version = "0.1.0"
-source = "git+https://github.com/studio-lucia/sega_cmp.git?branch=clone_size#88e9a4cf12066f311f8db823d92f269c3bf6993f"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "cc 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.36 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -623,7 +623,7 @@ dependencies = [
 "checksum regex-syntax 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)" = "8e931c58b93d86f080c734bfd2bce7dd0079ae2331235818133c8be7f422e20e"
 "checksum rustc-demangle 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "f312457f8a4fa31d3581a6f423a70d6c33a10b95291985df55f1ff670ec10ce8"
 "checksum scopeguard 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)" = "94258f53601af11e6a49f722422f6e3425c52b06245a5cf9bc09908b174f5e27"
-"checksum sega_cmp 0.1.0 (git+https://github.com/studio-lucia/sega_cmp.git?branch=clone_size)" = "<none>"
+"checksum sega_cmp 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4f37567c2239105febe32ef20b0e7b81575974a4735680ff17a68c9d5b2e2cec"
 "checksum serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)" = "db99f3919e20faa51bb2996057f5031d8685019b5a06139b1ce761da671b8526"
 "checksum serde_derive 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)" = "f4ba7591cfe93755e89eeecdbcc668885624829b020050e6aec99c2a03bd3fd0"
 "checksum serde_derive_internals 0.19.0 (registry+https://github.com/rust-lang/crates.io-index)" = "6e03f1c9530c3fb0a0a5c9b826bdd9246a5921ae995d75f512ac917fc4dd55b5"

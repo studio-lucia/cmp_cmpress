@@ -5,4 +5,4 @@ authors = ["Misty De Meo <mistydemeo@gmail.com>"]
 
 [dependencies]
 quicli = "0.2.0"
-sega_cmp = { git = "https://github.com/studio-lucia/sega_cmp.git", branch = "clone_size" }
+sega_cmp = "0.2.0"
