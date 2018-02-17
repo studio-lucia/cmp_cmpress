@@ -1,0 +1,8 @@
+[package]
+name = "cmp_cmpress"
+version = "0.1.0"
+authors = ["Misty De Meo <mistydemeo@gmail.com>"]
+
+[dependencies]
+quicli = "0.2.0"
+sega_cmp = { git = "https://github.com/studio-lucia/sega_cmp.git", branch = "clone_size" }
