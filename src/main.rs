@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{Read, Write};
+use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::PathBuf;
 use std::process::exit;
 
@@ -15,7 +15,7 @@ struct Opt {
     compression_size: u8,
     #[structopt(short = "f", default_value = "0",
                 help = "Byte offset in input file to begin compression")]
-    offset: usize,
+    offset: u64,
     #[structopt(short = "s",
                 help = "Maximum number of bytes to compress")]
     max_bytes: Option<usize>,
@@ -51,9 +51,21 @@ main!(|args: Opt| {
             exit(1);
         }
     }
+    // Since this defaults to 0 we can use it unconditionally
+    input_file.seek(SeekFrom::Start(args.offset))?;
 
     let mut input_data = vec![];
-    input_file.read_to_end(&mut input_data)?;
+    match args.max_bytes {
+        Some(n) => {
+            // If we had a request to read N bytes, make sure we only read that number
+            input_data.reserve(n);
+            assert_eq!(input_data.capacity(), n);
+            input_file.read_exact(&mut input_data)?;
+        }
+        None => {
+            input_file.read_to_end(&mut input_data)?;
+        }
+    }
 
     let output_header = sega_cmp::create_header(input_data.len() as i32, size);
     let output_data = sega_cmp::compress(&input_data, size)?;
