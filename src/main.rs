@@ -3,20 +3,26 @@ use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::PathBuf;
 use std::process::exit;
 
-#[macro_use] extern crate quicli;
+#[macro_use]
+extern crate quicli;
 use quicli::prelude::*;
 use sega_cmp;
 
 #[derive(StructOpt, Debug)]
 struct Opt {
-    #[structopt(short = "t", default_value = "8",
-                help = "Compression type (one of 8, 16, 32)")]
+    #[structopt(
+        short = "t",
+        default_value = "8",
+        help = "Compression type (one of 8, 16, 32)"
+    )]
     compression_size: u8,
-    #[structopt(short = "f", default_value = "0",
-                help = "Byte offset in input file to begin compression")]
+    #[structopt(
+        short = "f",
+        default_value = "0",
+        help = "Byte offset in input file to begin compression"
+    )]
     offset: u64,
-    #[structopt(short = "s",
-                help = "Maximum number of bytes to compress")]
+    #[structopt(short = "s", help = "Maximum number of bytes to compress")]
     max_bytes: Option<usize>,
     #[structopt(help = "Input file", parse(from_os_str))]
     input: PathBuf,
@@ -27,18 +33,23 @@ struct Opt {
 main!(|args: Opt| {
     let size;
     match args.compression_size {
-        8  => size = sega_cmp::Size::Byte,
+        8 => size = sega_cmp::Size::Byte,
         16 => size = sega_cmp::Size::Word,
         32 => size = sega_cmp::Size::Longword,
-        _  => {
-            println!("Compression size must be one of 8, 16, or 32! (Provided: {})",
-                     args.compression_size);
+        _ => {
+            println!(
+                "Compression size must be one of 8, 16, or 32! (Provided: {})",
+                args.compression_size
+            );
             exit(1);
         }
     }
 
     if !args.input.exists() {
-        println!("Input file {} does not exist!", args.input.to_str().unwrap());
+        println!(
+            "Input file {} does not exist!",
+            args.input.to_str().unwrap()
+        );
         exit(1);
     }
 
@@ -46,7 +57,11 @@ main!(|args: Opt| {
     match File::open(&args.input) {
         Ok(f) => input_file = f,
         Err(e) => {
-            println!("Error while trying to open file {}: {}", args.input.to_str().unwrap(), e);
+            println!(
+                "Error while trying to open file {}: {}",
+                args.input.to_str().unwrap(),
+                e
+            );
             exit(1);
         }
     }
@@ -73,7 +88,11 @@ main!(|args: Opt| {
     match File::create(&args.output) {
         Ok(f) => output_file = f,
         Err(e) => {
-            println!("Error writing to file {}: {}", args.output.to_str().unwrap(), e);
+            println!(
+                "Error writing to file {}: {}",
+                args.output.to_str().unwrap(),
+                e
+            );
             exit(1);
         }
     }
