@@ -4,9 +4,8 @@ use std::path::PathBuf;
 use std::process::exit;
 
 #[macro_use] extern crate quicli;
-extern crate sega_cmp;
-
 use quicli::prelude::*;
+use sega_cmp;
 
 #[derive(StructOpt, Debug)]
 struct Opt {
