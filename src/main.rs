@@ -3,8 +3,7 @@ use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::PathBuf;
 use std::process::exit;
 
-#[macro_use]
-extern crate quicli;
+use quicli::main;
 use quicli::prelude::*;
 use sega_cmp;
 
